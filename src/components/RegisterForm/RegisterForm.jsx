@@ -2,7 +2,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
-import { registerThunk } from "../../redux/auth/operations";
+import { register } from "../../redux/auth/operations";
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ const RegisterForm = () => {
 
   const handleSubmit = (values, options) => {
     console.log(values);
-    dispatch(registerThunk(values));
+    dispatch(register(values));
   };
 
   const applySchema = Yup.object().shape({

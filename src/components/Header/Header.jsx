@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import clsx from "clsx";
 import { useDispatch, useSelector } from "react-redux";
 import { selectIsLoggedIn, selectUser } from "../../redux/auth/selectors";
-import { logoutThunk } from "../../redux/auth/operations";
+import { logout } from "../../redux/auth/operations";
 import s from "./Header.module.css";
 
 const setActiveClass = ({ isActive }) => {
@@ -36,7 +36,7 @@ const Header = () => {
         )}
 
         {isLoggedIn && (
-          <button onClick={() => dispatch(logoutThunk())}>Logout</button>
+          <button onClick={() => dispatch(logout())}>Logout</button>
         )}
       </nav>
     </header>
