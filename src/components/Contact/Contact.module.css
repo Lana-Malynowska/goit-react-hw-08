@@ -1,10 +1,11 @@
-/* .contact {
+.contact {
   list-style: none;
   margin: 0;
   padding: 0.5rem;
   display: flex;
   gap: 1.5rem;
   justify-content: space-between;
+  align-items: center;
   border: 1px solid rgba(255, 255, 255, 0.87);
   border-radius: 8px;
   width: 25rem;
@@ -13,7 +14,7 @@
   div {
     display: flex;
     flex-direction: column;
-    gap: 0.5em;
+    gap: 0.1em;
 
     p {
       display: flex;
@@ -27,4 +28,4 @@
   .contact {
     border: 1px solid #213547;
   }
-} */
+}

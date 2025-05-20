@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
 import { register } from "../../redux/auth/operations";
+import s from "./RegisterForm.module.css";
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -36,8 +37,8 @@ const RegisterForm = () => {
   });
 
   return (
-    <div>
-      <div>
+    <div className={s.form}>
+      <div className={s.text}>
         <h2>Sign up now!</h2>
         <p>
           Saving contacts isn’t rocket science — but we still made an app for
@@ -59,7 +60,7 @@ const RegisterForm = () => {
               autoCorrect="off"
               placeholder="Name"
             />
-            <ErrorMessage name="name" component="div" />
+            <ErrorMessage className={s.error} name="name" component="div" />
           </label>
           <label>
             <span>Email</span>
@@ -67,11 +68,10 @@ const RegisterForm = () => {
               type="email"
               name="email"
               autoComplete="email"
-              autoCorrect="off"
-              autoCapitalize="none"
               placeholder="Email"
+              required
             />
-            <ErrorMessage name="email" component="div" />
+            <ErrorMessage className={s.error} name="email" component="div" />
           </label>
           <label>
             <span>Password</span>
@@ -79,11 +79,10 @@ const RegisterForm = () => {
               type="password"
               name="password"
               autoComplete="new-password"
-              autoCorrect="off"
-              autoCapitalize="none"
               placeholder="Password"
+              required
             />
-            <ErrorMessage name="password" component="div" />
+            <ErrorMessage className={s.error} name="password" component="div" />
           </label>
           <label>
             <span>Confirm Password</span>
@@ -91,19 +90,23 @@ const RegisterForm = () => {
               type="password"
               name="confirmPassword"
               autoComplete="new-password"
-              autoCorrect="off"
-              autoCapitalize="none"
               placeholder="Confirm password"
+              required
             />
-            <ErrorMessage name="confirmPassword" component="div" />
+            <ErrorMessage
+              className={s.error}
+              name="confirmPassword"
+              component="div"
+            />
           </label>
-          <div>
-            <Link to="/login">Have account? Sign in now!</Link>
-          </div>
+
           <button type="submit">Sign up</button>
+          <div className={s.link}>
+            <Link to="/login">Have account? Sign in now!</Link>
+            <Link to="/">Return to main page</Link>
+          </div>
         </Form>
       </Formik>
-      <Link to="/">Return to main page</Link>
     </div>
   );
 };

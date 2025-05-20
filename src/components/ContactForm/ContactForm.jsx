@@ -36,7 +36,7 @@ const ContactForm = () => {
       initialValues={{ name: "", number: "" }}
       onSubmit={handleSubmit}
     >
-      <Form className={s.form}>
+      <Form>
         <label>
           <span>Name</span>
           <Field type="text" name="name" />

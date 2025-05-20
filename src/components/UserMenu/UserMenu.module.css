@@ -1,0 +1,8 @@
+.userMenu {
+  display: flex;
+  gap: 1rem;
+  text-align: center;
+  h2 {
+    color: #646cff;
+  }
+}
