@@ -16,12 +16,12 @@ const ContactsPage = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <>
       <ContactForm />
       <SearchBox />
       {isLoading && !error && <b>Request in progress...</b>}
       <ContactList />
-    </div>
+    </>
   );
 };
 

@@ -13,15 +13,9 @@ const RegisterForm = () => {
     confirmPassword: "",
   };
 
-  // const handleSubmit = (values, { resetForm }) => {
-  //   dispatch();
-  //   console.log(values);
-  //   resetForm();
-  // };
-
-  const handleSubmit = (values, options) => {
-    console.log(values);
-    dispatch(register(values));
+  const handleSubmit = ({ name, email, password }, { resetForm }) => {
+    dispatch(register({ name, email, password }));
+    resetForm();
   };
 
   const applySchema = Yup.object().shape({
@@ -44,12 +38,11 @@ const RegisterForm = () => {
   return (
     <div>
       <div>
-        <h2>CallSheet</h2>
+        <h2>Sign up now!</h2>
         <p>
           Saving contacts isn’t rocket science — but we still made an app for
           it. You’re welcome!
         </p>
-        <h2>Sign up now!</h2>
       </div>
       <Formik
         validationSchema={applySchema}
@@ -62,6 +55,7 @@ const RegisterForm = () => {
             <Field
               type="text"
               name="name"
+              autoComplete="off"
               autoCorrect="off"
               placeholder="Name"
             />
