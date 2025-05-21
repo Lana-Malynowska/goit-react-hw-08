@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import * as Yup from "yup";
 import { register } from "../../redux/auth/operations";
 import s from "./RegisterForm.module.css";
+import { useState } from "react";
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -14,10 +15,16 @@ const RegisterForm = () => {
     confirmPassword: "",
   };
 
-  const handleSubmit = ({ name, email, password }, { resetForm }) => {
-    console.log({ name, email, password });
-    dispatch(register({ name, email, password }));
-    resetForm();
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleSubmit = async ({ name, email, password }, { resetForm }) => {
+    try {
+      await dispatch(register({ name, email, password })).unwrap();
+      resetForm();
+      setErrorMessage("");
+    } catch (error) {
+      setErrorMessage(error);
+    }
   };
 
   const applySchema = Yup.object().shape({
@@ -102,6 +109,7 @@ const RegisterForm = () => {
           </label>
 
           <button type="submit">Sign up</button>
+          {errorMessage && <div className={s.error}>{errorMessage}</div>}
           <div className={s.link}>
             <Link to="/login">Have account? Sign in now!</Link>
             <Link to="/">Return to main page</Link>
