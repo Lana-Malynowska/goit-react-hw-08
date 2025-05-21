@@ -15,6 +15,7 @@ const RegisterForm = () => {
   };
 
   const handleSubmit = ({ name, email, password }, { resetForm }) => {
+    console.log({ name, email, password });
     dispatch(register({ name, email, password }));
     resetForm();
   };
